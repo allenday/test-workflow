@@ -12,6 +12,14 @@
   </properties>
  
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.commonmark/commonmark-parent -->
+    <dependency>
+        <groupId>org.commonmark</groupId>
+        <artifactId>commonmark-parent</artifactId>
+        <version>0.17.1</version>
+        <type>pom</type>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
