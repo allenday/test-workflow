@@ -58,6 +58,18 @@ public class AppTest
     }
 
     private static void validateFrontMatter(final Map<String, List<String>> frontMatter, String filename) {
+        assert frontMatter.containsKey("type") : filename + " has no type";
+        List<String> types = frontMatter.get("type");
+        assert types.size() == 1 : filename + " expected a single type";
+        String type = types.get(0);
+        assert type.compareTo("post") == 0 : filename + " expected type 'post', but got '" + type + "'";
+
+        assert frontMatter.containsKey("author") : filename + " has no author";
+        List<String> authors = frontMatter.get("author");
+        assert authors.size() == 1 : filename + " expected a single author";
+        String author = authors.get(0);
+        assert author.length() > 0 : filename + " expected a non-zero character author";
+
         assert frontMatter.containsKey("title") : filename + " has no title";
         List<String> titles = frontMatter.get("title");
         assert titles.size() == 1 : filename + " expected a single title";
