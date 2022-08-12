@@ -48,7 +48,7 @@ public class AppTest
 
             //TODO enhanceFrontMatterWithGoogleAnalytics()
             //TODO enhanceFrontMatterWithAhrefs()
-            validateFrontMatter(frontMatter);
+            validateFrontMatter(frontMatter, f.toString());
             
 
             //HtmlRenderer renderer = HtmlRenderer.builder().build();
@@ -57,11 +57,11 @@ public class AppTest
         }
     }
 
-    private static void validateFrontMatter(final Map<String, List<String>> frontMatter) {
+    private static void validateFrontMatter(final Map<String, List<String>> frontMatter, String filename) {
         assertTrue(frontMatter.containsKey("title"));
         List<String> titles = frontMatter.get("title");
         //assertTrue(titles.size() == 1); //"title is a single string");
-        assert titles.size() == 0 : "expected size 1";
+        assert titles.size() == 0 : filename + " expected size 1";
         assertTrue(titles.get(0).length() != 0);
     }
 
