@@ -58,13 +58,17 @@ public class AppTest
     }
 
     private static void validateFrontMatter(final Map<String, List<String>> frontMatter, String filename) {
-        assertTrue(frontMatter.containsKey("title"));
+        assert frontMatter.containsKey("title") : filename + " has no title";
         List<String> titles = frontMatter.get("title");
-        //assertTrue(titles.size() == 1); //"title is a single string");
         assert titles.size() == 1 : filename + " expected a single title";
         String title = titles.get(0);
         assert title.length() >= 50 && title.length() <= 70 : filename + " expected a 50-70 character title";
 
+        assert frontMatter.containsKey("meta_title") : filename + " has no meta_title";
+        List<String> metatitles = frontMatter.get("meta_title");
+        assert metatitles.size() == 1 : filename + " expected a single meta_title";
+        String metatitle = metatitles.get(0);
+        assert metatitle.length() >= 150 && metatitle.length() <= 160 : filename + " expected a 150-160 character meta_title";
     }
 
 
