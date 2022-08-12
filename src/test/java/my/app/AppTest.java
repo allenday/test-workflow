@@ -61,8 +61,10 @@ public class AppTest
         assertTrue(frontMatter.containsKey("title"));
         List<String> titles = frontMatter.get("title");
         //assertTrue(titles.size() == 1); //"title is a single string");
-        assert titles.size() == 0 : filename + " expected size 1";
-        assertTrue(titles.get(0).length() != 0);
+        assert titles.size() == 1 : filename + " expected a single title";
+        String title = titles.get(0);
+        assert titles.length() >= 50 && title.length() <= 70 : filename + " expected a 50-70 character title";
+
     }
 
 
