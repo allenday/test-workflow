@@ -3,6 +3,8 @@ package my.app;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.testng.AssertJUnit.*;
+
 
 import java.io.*;
 import java.util.*;
@@ -32,7 +34,8 @@ public class AppTest
         YamlFrontMatterVisitor visitor = new YamlFrontMatterVisitor();
 
         assertTrue( true );
-        String directory = "src/test/resources";
+//        String directory = "src/test/resources";
+        String directory = "site/content/english/blog";
         List<File> files = listFiles(directory);
 
         for (File f : files) {
@@ -41,14 +44,27 @@ public class AppTest
             Node document = parser.parse(txt);
             document.accept(visitor);
 
-            Map<String, List<String>> data = visitor.getData();
-            assertTrue(data.containsKey("literal"));
+            Map<String, List<String>> frontMatter = visitor.getData();
+
+            //TODO enhanceFrontMatterWithGoogleAnalytics()
+            //TODO enhanceFrontMatterWithAhrefs()
+            validateFrontMatter(frontMatter);
+            
 
             //HtmlRenderer renderer = HtmlRenderer.builder().build();
             //String res = renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
             //System.err.println(res);
         }
     }
+
+    private static void validateFrontMatter(final Map<String, List<String>> frontMatter) {
+        assertTrue(frontMatter.containsKey("title"));
+        List<String> titles = frontMatter.get("title");
+        //assertTrue(titles.size() == 1); //"title is a single string");
+        assert titles.size() == 1 : "expected size 1";
+        assertTrue(titles.get(0).length() != 0);
+    }
+
 
     private static List<File> listFiles(final String directory) {
         if (directory == null) {
