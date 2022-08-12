@@ -61,7 +61,7 @@ public class AppTest
         assertTrue(frontMatter.containsKey("title"));
         List<String> titles = frontMatter.get("title");
         //assertTrue(titles.size() == 1); //"title is a single string");
-        assert titles.size() == 1 : "expected size 1";
+        assert titles.size() == 0 : "expected size 1";
         assertTrue(titles.get(0).length() != 0);
     }
 
