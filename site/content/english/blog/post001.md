@@ -1,16 +1,18 @@
 ---
+category:
+  - test-multicategory-1
+tags: 
+  - tag1
+  - tag2
 author: allenday
 bg_image: /blog-images/bg.png
 blog_category: test-category
-category:
-  - test-multicategory-1
 date: 2022-02-22
 description: >-
   This is a heredoc description
 image: /blog-images/bg.png
 keywords: 'kw1, kw2'
 meta_title: this is a meta title
-tags: ['tag1','tag2']
 title: this is a real title
 type: post
 ---
